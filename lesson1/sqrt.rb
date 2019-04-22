@@ -14,7 +14,8 @@ if d > 0
   x2 = (-b - d_sqrt) / (2.0 * a)
   puts "x1 = #{x1}, x2 = #{x2}"
 elsif d == 0
-  puts x = -b / (2.0 * a)
+  x = -b / (2.0 * a)
+  puts "x1 = #{x1}"
 elsif d < 0
   puts "No roots"
 end 
