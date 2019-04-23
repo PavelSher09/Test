@@ -1,8 +1,10 @@
 letters = {}
-ind = 0
 
-('a'..'z').each {|x| letters[x] = ind += 1 }
+("a".."z").each.with_index(1) do |letter, index| 
 
-let = letters.keep_if { |a, b| a =~ /[aeiou]/ }
- 
-puts let
+letters[letter] = index
+letters.keep_if { |a, b| a =~ /[aeiou]/ }
+
+
+end
+puts letters
