@@ -1,4 +1,4 @@
-class Route
+cclass Route
 
   attr_reader :stations, :name
 
@@ -11,7 +11,7 @@ class Route
   end
 
   def delete_route(stations)
-    @stations.delete(stations)
+     stations.delete(station) unless [stations.first, stations.last].include?(station)
   end
 
   def show_stations
