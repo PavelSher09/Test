@@ -1,4 +1,4 @@
-cclass Route
+class Route
 
   attr_reader :stations, :name
 
