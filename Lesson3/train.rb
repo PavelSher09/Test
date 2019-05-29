@@ -66,8 +66,4 @@ attr_reader :number,  :type,  :route,  :speed
     route.stations[@current_station_index - 1] if @current_station_index - 1 >= 0
   end
   
-  def tt
-   puts @train_type
-   end
-
 end
