@@ -18,12 +18,12 @@ attr_reader :number,  :type,  :route, :speed
     @speed = 0 
   end
 
-    def add_wagon
+  def add_wagon
     @wagon_count += 1 if @speed == 0
   end
 
   def delete_wagon
-    return if @wagon_count <= 1
+    return unless @wagon_count > 0
     @wagon_count -= 1 if @speed == 0 
   end
 
