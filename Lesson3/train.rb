@@ -10,7 +10,7 @@ attr_reader :number,  :type,  :route, :speed
   end
   
   def go(value)
-    return if value <= 0
+    return if value < 0
     @speed = value    
   end
 
