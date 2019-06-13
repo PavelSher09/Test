@@ -1,9 +1,0 @@
-class Pass_wagon
-
-attr_reader  :type  
-  
-  def type
-    @type = "pass"
-  end
-
-end
