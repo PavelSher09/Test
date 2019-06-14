@@ -1,8 +1,10 @@
 class Train
 
-attr_reader :route,  :speed,  :wagons,  :type
+attr_reader :route,  :speed,  :wagons,  :type, :number
 
-  def initialize
+  def initialize(number)
+    @number = number
+    @type = type
     @speed = 0
     @wagons = []
   end
@@ -17,19 +19,20 @@ attr_reader :route,  :speed,  :wagons,  :type
     @speed = 0
   end
 
-  def add_wagon(wagon)
-    return unless speed.zero?
-    return unless attachable_wagon?(wagon)
-    @wagons << wagon
-  end
 
-  def delete_wagon(wagon)
-    return unless speed.zero?
-    return unless attachable_wagon?(wagon)
-    @wagons.delete(wagon)
-  end
+def add_wagon(wagon)
+  return unless speed.zero?
+  return unless attachable_wagon?(wagon)
+  @wagons << wagon
+end
 
-  def get_route(route)
+def delete_wagon(wagon)
+  return unless speed.zero?
+  return unless attachable_wagon?(wagon)
+  @wagons.delete(wagon)
+end
+
+def get_route(route)
     @route = route
     @current_station_index = 0
     current_station.add_train(self)
@@ -41,7 +44,7 @@ attr_reader :route,  :speed,  :wagons,  :type
 
   def go_next
     return if next_station.nil?
-    current_stat1ion.send_train(self)
+    current_station.send_train(self)
     next_station.add_train(self)
     @current_station_index += 1
   end

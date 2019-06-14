@@ -19,10 +19,6 @@ class Station
     @trains.select { |train| train.type == type }
   end
 
-  def station_trains
-    puts @trains
-  end
-
   def to_s
     name
   end
