@@ -19,7 +19,6 @@ attr_reader :route,  :speed,  :wagons,  :type, :number
     @speed = 0
   end
 
-
 def add_wagon(wagon)
   return unless speed.zero?
   return unless attachable_wagon?(wagon)

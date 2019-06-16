@@ -1,8 +1,7 @@
 class PassTrain < Train
 
   def initialize(number)
-    @number = number
-    @type = 'pass'
+    @type = :pass
     super
   end
 

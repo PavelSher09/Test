@@ -176,6 +176,10 @@ def delete_wagon
     show(@stations)
   end
 
+  def to_s
+    @trains
+  end
+
 end
 
 
