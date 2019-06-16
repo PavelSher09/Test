@@ -1,5 +1,0 @@
-class PassWagon
-
-
-
-end
