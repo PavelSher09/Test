@@ -189,4 +189,3 @@ def delete_wagon
 
 end
 Main.new.run
-
