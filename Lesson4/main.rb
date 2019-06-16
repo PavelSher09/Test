@@ -1,3 +1,9 @@
+
+require_relative 'train'
+require_relative 'station'
+require_relative 'route'
+require_relative 'passenger_train'
+require_relative 'cargo_train'
 class Main
 
 attr_reader  :stations,  :routes,  :trains
@@ -64,10 +70,10 @@ attr_reader  :stations,  :routes,  :trains
   def create_train
     puts "What's the number of train?"
     number = gets.chomp
-    puts "Choose type of train: 1 - pass, 2 - cargo"
+    puts "Choose type of train: 1 - passenger, 2 - cargo"
     type = gets.to_i
     case type
-    when 1 then @trains << PassTrain.new(number)
+    when 1 then @trains << PassengerTrain.new(number)
     when 2 then @trains << CargoTrain.new(number)
     end
     show(@trains)
@@ -82,7 +88,7 @@ attr_reader  :stations,  :routes,  :trains
     show(@trains)
     train = select_from_list(@trains)
   case train
-        when train.is_a?(PassTrain) then train.add_wagon(PassWagon.new)
+        when train.is_a?(PassengerTrain) then train.add_wagon(PassengerWagon.new)
         when train.is_a?(CargoTrain) then train.add_wagon(CargoWagon.new)
         end
         puts " To train #{train.number} attached wagon"
@@ -93,7 +99,7 @@ def delete_wagon
     show(@trains)
     train = select_from_list(@trains)
   case train
-        when train.is_a?(PassTrain) then train.delete_wagon(PassWagon.new)
+        when train.is_a?(PassengerTrain) then train.delete_wagon(PassengerWagon.new)
         when train.is_a?(CargoTrain) then train.delete_wagon(CargoWagon.new)
         end
         puts " From train #{train.number} deleted wagon"
@@ -181,5 +187,5 @@ def delete_wagon
   end
 
 end
-
+Main.new.run
 
