@@ -31,11 +31,11 @@ attr_reader  :stations,  :routes,  :trains
       when 10 then show_stations
       when 11 then show_routes
       when 12 then delete_wagon
+      when 13 then wag
       when 0 then break
       end
     end
   end
-
 
   def show_main_menu
     puts '1 - New station'
@@ -87,22 +87,23 @@ attr_reader  :stations,  :routes,  :trains
     puts "What train to attach?"
     show(@trains)
     train = select_from_list(@trains)
-  case train
-        when train.is_a?(PassengerTrain) then train.add_wagon(PassengerWagon.new)
-        when train.is_a?(CargoTrain) then train.add_wagon(CargoWagon.new)
-        end
-        puts " To train #{train.number} attached wagon"
+    case train
+    when PassengerTrain then train.add_wagon(PassengerWagon.new)
+    when CargoTrain then train.add_wagon(CargoWagon.new)
+    end
+    puts "To train #{train.number} attached wagon"
+    puts train.wagons
   end
 
-def delete_wagon
-    puts "What train to delete wagon?"
+  def delete_wagon
+    puts "From what train to delete wagon"
     show(@trains)
     train = select_from_list(@trains)
-  case train
-        when train.is_a?(PassengerTrain) then train.delete_wagon(PassengerWagon.new)
-        when train.is_a?(CargoTrain) then train.delete_wagon(CargoWagon.new)
-        end
-        puts " From train #{train.number} deleted wagon"
+    show(train.wagons)
+    puts "select wagon to delete"
+    selected_wagon = select_from_list(train.wagons)
+    train.delete_wagon(selected_wagon)
+    puts train.wagons
   end
 
   def create_route
@@ -183,8 +184,9 @@ def delete_wagon
   end
 
   def to_s
-    @trains
+    number
   end
 
 end
+
 Main.new.run
