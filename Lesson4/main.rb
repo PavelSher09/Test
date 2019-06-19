@@ -135,7 +135,7 @@ attr_reader  :stations,  :routes,  :trains
     show(@stations)
     station_index = select_from_list(@stations)
     route_index.add_route(station_index)
-    @routes.each { |route| route.show_stations }
+    show(route.stations)
   end
 
   def delete_station_from_route
@@ -146,7 +146,7 @@ attr_reader  :stations,  :routes,  :trains
     show(@stations)
     station_index = select_from_list(@stations)
     route_index.delete_route(station_index)
-    @routes.each { |route| route.show_stations }
+    show(route.stations)
   end
 
   def get_route
