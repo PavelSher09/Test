@@ -31,7 +31,6 @@ attr_reader  :stations,  :routes,  :trains
       when 10 then show_stations
       when 11 then show_routes
       when 12 then delete_wagon
-      when 13 then wag
       when 0 then break
       end
     end
@@ -92,7 +91,7 @@ attr_reader  :stations,  :routes,  :trains
     when CargoTrain then train.add_wagon(CargoWagon.new)
     end
     puts "To train #{train.number} attached wagon"
-    puts train.wagons
+    show(train.wagons)
   end
 
   def delete_wagon
@@ -103,7 +102,7 @@ attr_reader  :stations,  :routes,  :trains
     puts "select wagon to delete"
     selected_wagon = select_from_list(train.wagons)
     train.delete_wagon(selected_wagon)
-    puts train.wagons
+    show(train.wagons)
   end
 
   def create_route
@@ -122,7 +121,7 @@ attr_reader  :stations,  :routes,  :trains
     route = select_from_list(routes)
     puts route
     puts "Choose what to do. 1 - add station to route; 2 - delete station from route"
-    case  gets.chomp.to_i
+    case gets.to_i
     when 1 then add_station_to_route(route)
     when 2 then delete_station_from_route(route)
     end
