@@ -13,7 +13,7 @@ NUMBER_FORMAT_ERROR = 'Wrong number format'
 
 attr_reader :route,  :speed,  :wagons,  :type, :number
 
-@@trains = {}
+  @@trains = {}
 
   def validate!
     raise NUMBER_FORMAT_ERROR if number !~ NUMBER_FORMAT
