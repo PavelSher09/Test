@@ -8,7 +8,7 @@ include Manufacturer
 include InstanceCounter
 include Validation
 
-NUMBER_FORMAT = /^[a-z0-9]{3}(-)?[a-z0-9]{2}/i
+NUMBER_FORMAT = /^[a-z0-9]{3}(-)?[a-z0-9]{2}$/i
 NUMBER_FORMAT_ERROR = 'Wrong number format'
 
 attr_reader :route,  :speed,  :wagons,  :type, :number
