@@ -83,7 +83,7 @@ attr_reader  :stations,  :routes,  :trains
     when 1 then @trains << PassengerTrain.new(number)
     when 2 then @trains << CargoTrain.new(number)
     end
-    rescue StandardError => e
+  rescue StandardError => e
     puts "Error - #{e.message}"
     retry
     show(@trains)
