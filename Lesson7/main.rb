@@ -130,7 +130,14 @@ attr_reader  :stations,  :routes,  :trains
     train.delete_wagon(selected_wagon)
     show(train.wagons)
   end
-
+  
+  def cargo_wagon(wagon)
+    puts 'Enter volume to reserve'
+    amount = gets.chomp.to_i
+    wagon.reserve_space
+    puts "reserved places in wagon #{wagon.number}"
+  end
+      
   def passenger_wagon(wagon)
     puts 'Enter volume to reserve'
     amount = gets.chomp.to_i
