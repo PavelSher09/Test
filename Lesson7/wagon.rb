@@ -16,7 +16,7 @@ class Wagon
   end
 
   def reserve_space(amount)
-    return unless amount > free_space
+    return if amount < free_space
 
     self.needed_space += amount
   end
