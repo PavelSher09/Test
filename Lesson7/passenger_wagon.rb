@@ -8,5 +8,9 @@ class PassengerWagon < Wagon
     @type = :passenger
     super
   end
+  
+  def reserve_space
+    super(1)
+  end
 
 end
