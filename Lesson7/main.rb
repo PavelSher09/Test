@@ -168,6 +168,8 @@ attr_reader  :stations,  :routes,  :trains
   def choose_passenger_wagon(wagon)
     wagon.reserve_space
     puts "Reserved space in  #{wagon.number}"
+  rescue StandardError => e
+    puts "Error -  #{e.message}"
   end
       
   def choose_cargo_wagon(wagon)
@@ -175,6 +177,8 @@ attr_reader  :stations,  :routes,  :trains
     amount = gets.chomp.to_i
     wagon.reserve_space(amount)
     puts "Reserved space in  #{wagon.number} is #{amount}"
+  rescue StandardError => e
+    puts "Error -  #{e.message}"
   end
 
   def create_route
