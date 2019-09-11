@@ -164,8 +164,13 @@ attr_reader  :stations,  :routes,  :trains
       when CargoTrain then choose_cargo_wagon(wagon)
       end
   end
-
+  
   def choose_passenger_wagon(wagon)
+    wagon.reserve_space
+    puts "Reserved space in  #{wagon.number}"
+  end
+      
+  def choose_cargo_wagon(wagon)
     puts 'Enter volume to reserve - '
     amount = gets.chomp.to_i
     wagon.reserve_space(amount)
