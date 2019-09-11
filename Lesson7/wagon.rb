@@ -1,5 +1,7 @@
 class Wagon
-
+  
+  NOT_ENOUGH_SPACE = 'Not enough space!'
+  
   attr_reader :number,  :space
   attr_accessor :needed_space
 
@@ -16,8 +18,7 @@ class Wagon
   end
 
   def reserve_space(amount)
-    return if amount < free_space
-
+    raise NOT_ENOUGH_SPACE if amount > free_space
     self.needed_space += amount
   end
 
