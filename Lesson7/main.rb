@@ -139,10 +139,10 @@ attr_reader  :stations,  :routes,  :trains
   end
       
   def passenger_wagon(wagon)
-    puts 'Enter volume to reserve'
-    amount = gets.chomp.to_i
-    wagon.reserve_space
-    puts "reserved places in wagon #{wagon.number}"
+   wagon.reserve_space
+    puts "Reserved space in  #{wagon.number}"
+  rescue StandardError => e
+    puts "Error -  #{e.message}"
   end
 
   def cargo_wagon
