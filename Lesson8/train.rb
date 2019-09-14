@@ -57,7 +57,7 @@ class Train
     @wagons.delete(wagon)
   end
 
-  def assign_route(route)
+  def get_route(route)
     @route = route
     @current_station_index = 0
     current_station.add_train(self)
