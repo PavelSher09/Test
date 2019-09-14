@@ -12,3 +12,6 @@ Metrics/ClassLength:
 
 Metrics/LineLength:
   Max: 100
+
+Style/ClassVars:
+  Enabled: false
