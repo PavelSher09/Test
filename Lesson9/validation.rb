@@ -14,13 +14,12 @@ module Validation
   end
 
   module InstanceMethods
+    # rubocop:disable Metrics/CyclomaticComplexity
     def validate!
       self.class.validates.each do |validation|
         var_name = "@#{validation[:name]}".to_sym
         value = instance_variable_get(var_name)
-        type = validation[:type]
         args = validation[:args]
-
 
         case validation[:type]
         when :presence
@@ -32,6 +31,7 @@ module Validation
         end
       end
     end
+    # rubocop:enable Metrics/CyclomaticComplexity
 
     def valid?
       validate!

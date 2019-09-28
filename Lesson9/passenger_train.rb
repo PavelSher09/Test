@@ -7,8 +7,7 @@ class PassengerTrain < Train
   include Validation
   include Accessors
 
-
-  validate  :number, :format, NUMBER_FORMAT
+  validate :number, :format, NUMBER_FORMAT
 
   def initialize(number)
     @type = :passenger
