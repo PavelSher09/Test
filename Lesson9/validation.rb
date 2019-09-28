@@ -9,7 +9,7 @@ module Validation
 
     def validate(name, type, *args)
       @validates ||= []
-      @validates << { name: name, type: type, args: args }
+      @validates << { name: name, type: type, args: args[0] }
     end
   end
 
