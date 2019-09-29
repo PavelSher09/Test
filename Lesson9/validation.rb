@@ -9,29 +9,31 @@ module Validation
 
     def validate(name, type, *args)
       @validates ||= []
-      @validates << { name: name, type: type, args: args[0] }
+      @validates << { name: name, type: type, args: args }
     end
   end
 
   module InstanceMethods
-    # rubocop:disable Metrics/CyclomaticComplexity
     def validate!
       self.class.validates.each do |validation|
         var_name = "@#{validation[:name]}".to_sym
         value = instance_variable_get(var_name)
-        args = validation[:args]
 
-        case validation[:type]
-        when :presence
-          raise 'Presence Error' if value.nil? || value == ''
-        when :format
-          raise 'Format Error' if value !~ args
-        when :type
-          raise 'Type Error' unless value.is_a?(args)
-        end
+        send("validation_#{validation[:type]}", value, *validation[:args])
       end
     end
-    # rubocop:enable Metrics/CyclomaticComplexity
+
+    def validation_presence(name)
+      raise 'Presence Error' if name.nil? || name == ''
+    end
+
+    def validation_format(name, format)
+      raise 'Format Error' if name !~ format
+    end
+
+    def validation_type(name, type)
+      raise 'Type Error' if name.class != type
+    end
 
     def valid?
       validate!
